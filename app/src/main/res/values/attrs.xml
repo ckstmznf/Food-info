@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    attr을 커스텀 할때 사용한다.-->
+    <attr name="textColor" format="color"/>
+    <!--  textColor라는 커스텀 속성을 만들어 준다.  -->
+
+    <attr name="buttonTextColor" format="color"/>
+    <attr name="backgroundColor" format="color"/>
+    <attr name="unselectedColor" format="color"/>
+</resources>

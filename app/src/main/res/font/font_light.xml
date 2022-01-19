@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font app:font="@font/gmarket_light" />
+    <!--  사용할 폰트를 하드 코딩 하는것 보다 xml파일을 따로 만들어서 사용한다.  -->
+</font-family>
