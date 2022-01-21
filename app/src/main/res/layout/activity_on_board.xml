@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.heechan.foodinfo.ui.onBoard.OnBoardViewModel" />
+
+        <variable
+            name="maxLength"
+            type="int" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.onBoard.OnBoardActivity"
+
+        android:background="?attr/backgroundColor"
+        >
+        <!--PRND-->
+        <TextView
+            android:id="@+id/bt_onBoard_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/font_bold"
+            android:padding="24dp"
+            android:text="@string/onBoard_skip"
+            android:textColor="?attr/colorPrimary"
+
+            android:textSize="16sp"
+            app:bindingInvisible="@{viewModel.currentPage != maxLength - 1}"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_onBoard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            app:bindViewPagerCallBack="@{viewModel.pagerCallBack}"
+
+            app:layout_constraintBottom_toTopOf="@id/bt_onBoard_finish"
+            app:layout_constraintTop_toBottomOf="@id/bt_onBoard_skip"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="54dp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tl_onBoard_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:visibility="@{viewModel.currentPage != maxLength - 1}"
+
+            bindTapLayoutMediator="@{vpOnBoard}"
+
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+
+            app:tabPaddingBottom="0dp"
+            app:tabPaddingEnd="16dp"
+            app:tabPaddingStart="0dp"
+            app:tabPaddingTop="0dp"
+
+            app:tabBackground="@drawable/sc_dot_selected"
+
+            android:clickable="false"
+            android:focusable="false"
+
+            app:layout_constraintTop_toTopOf="@id/bt_onBoard_finish"
+            app:layout_constraintBottom_toBottomOf="@id/bt_onBoard_finish"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <Button
+            android:id="@+id/bt_onBoard_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="34dp"
+
+            android:text="@string/onBoard_finish"
+
+            app:bindingInvisible="@{viewModel.currentPage == maxLength - 1}"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

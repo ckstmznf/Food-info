@@ -7,4 +7,6 @@
     <attr name="buttonTextColor" format="color"/>
     <attr name="backgroundColor" format="color"/>
     <attr name="unselectedColor" format="color"/>
+
+    <attr name="Hello" format="color"/>
 </resources>
