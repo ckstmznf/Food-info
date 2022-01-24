@@ -4,19 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.heechan.foodinfo.R
 import com.heechan.foodinfo.base.BaseActivity
 import com.heechan.foodinfo.data.OnBoard
 import com.heechan.foodinfo.databinding.ActivityOnBoardBinding
 import com.heechan.foodinfo.ui.all.ViewPagerAdapter
+import com.heechan.foodinfo.util.DataStoreUtil
+import kotlinx.coroutines.launch
 
 class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>(R.layout.activity_on_board) {
     private val viewModel : OnBoardViewModel by viewModels()
+
+    private lateinit var dataStore : DataStoreUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding.viewModel = viewModel
+        dataStore = DataStoreUtil(applicationContext)
 
         val fragments = initFragment()
 
@@ -30,6 +36,14 @@ class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>(R.layout.activity_o
 
         binding.btOnBoardFinish.setOnClickListener {
             finish()
+        }
+    }
+
+    override fun finish() {
+        lifecycleScope.launch {
+            dataStore.afterFirstLaunch(this@OnBoardActivity)
+
+            super.finish()
         }
     }
 
