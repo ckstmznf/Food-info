@@ -1,10 +1,12 @@
 package com.heechan.foodinfo.ui.all
 
 import android.view.View
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.BindingConversion
 import androidx.viewpager2.widget.ViewPager2
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -40,5 +42,9 @@ fun bindTapLayoutMediator(tabLayout: TabLayout, pager : ViewPager2){
     }.attach()
 }
 
+@BindingAdapter("bindImageUrl")
+fun bindImageUrl(imgView : ImageView, url : String?){
+    if(url.isNullOrEmpty()) return
 
-//장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼 장인수 시발 새끼
+    Glide.with(imgView).load(url).into(imgView)
+}

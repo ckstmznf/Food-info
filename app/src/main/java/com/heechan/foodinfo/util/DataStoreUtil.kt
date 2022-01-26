@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 private val Context.dataStore by preferencesDataStore(name = "datastore")
 
-class DataStoreUtil(appContext: Context) {
+class DataStoreUtil @Inject constructor(@ApplicationContext appContext: Context) {
+    //ApplicationContext을 붙여 주면 바로 주입받을 수 있다.
+
     companion object {
         val KEY_FIRST_LAUNCH = booleanPreferencesKey("first_launch") //DataStore에 앱 처음 실행 여부를 저장할 키
     }

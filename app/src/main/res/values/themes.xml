@@ -80,4 +80,10 @@
 
         <item name="postSplashScreenTheme">@style/Theme.Foodinfo</item> <!-- 스플레시 스크린 다음 화면의 테마 -->
     </style>
+
+    <style name="TitleBarTextAppearance" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/font_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/textColor</item>
+    </style>
 </resources>

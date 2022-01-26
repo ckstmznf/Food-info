@@ -1,4 +1,4 @@
-package com.heechan.foodinfo.data
+package com.heechan.foodinfo.data.model
 
 import java.io.Serializable
 
