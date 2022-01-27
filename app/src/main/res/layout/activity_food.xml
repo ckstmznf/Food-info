@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="food"
+            type="com.heechan.foodinfo.data.model.Food" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.Food.FoodActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_food"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:title="@string/food_title"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+
+            app:navigationIcon="@drawable/ic_arrow_back"
+
+            android:background="?attr/backgroundColor"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--      fillViewport는 화면애 보이는 영역전체를 채운다.          -->
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:fillViewport="true"
+
+            app:layout_constraintTop_toBottomOf="@id/toolbar_food"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp_food"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.35"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tl_food_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:clickable="false"
+
+                    android:focusable="false"
+                    app:bindTapLayoutMediator="@{vpFood}"
+
+                    app:layout_constraintBottom_toBottomOf="@id/vp_food"
+                    app:layout_constraintEnd_toEndOf="@id/vp_food"
+                    app:layout_constraintStart_toStartOf="@id/vp_food"
+                    app:layout_constraintTop_toTopOf="@id/vp_food"
+
+                    app:layout_constraintVertical_bias="0.95"
+
+                    app:tabBackground="@drawable/sc_dot_selected"
+                    app:tabGravity="center"
+
+                    app:tabIndicatorHeight="0dp"
+                    app:tabPaddingBottom="0dp"
+                    app:tabPaddingEnd="16dp"
+                    app:tabPaddingStart="0dp"
+
+                    app:tabPaddingTop="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_food_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="@{food.prdlstNm, default=`Name`}"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/font_bold"
+
+                    android:layout_margin="24dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/vp_food"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tc_food_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="@{food.rawmtrl, default=`Info`}"
+                    android:fontFamily="@font/font_regular"
+                    android:lineSpacingExtra="3dp"
+
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="8dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+
+                <Button
+                    android:id="@+id/btn_food_share"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/food_share"
+                    android:layout_margin="24dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/tc_food_info"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintVertical_bias="1"
+                    />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

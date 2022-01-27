@@ -45,4 +45,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.rvMain.layoutManager = GridLayoutManager(this, 2)
         binding.rvMain.adapter = MainRecyclerAdapter()
     }
+
+    override fun onBackPressed() {
+        binding.rvMain.run{
+            if(canScrollVertically(-1)) smoothScrollToPosition(0) //더 위로 올릴 수 있다면 -> 가장 위로 올린다.
+            else super.onBackPressed()
+        }
+    }
 }
